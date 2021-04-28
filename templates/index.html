@@ -1,5 +1,4 @@
-{% extends "layout.html" %}
-{% block maincontent %}
+{% extends "layout.html" %} {% block maincontent %}
 <form id="covid-form" action="" method="post">
   <div class="field-place">
     <i class="bi bi-geo-alt"></i>
@@ -10,15 +9,34 @@
     <i class="bi bi-bag-plus"></i>
 
     <div class="form-check form-switch">
-      <input class="form-check-input" type="radio" id="oxygen" name="need" value="oxygen" checked />
+      <input
+        class="form-check-input"
+        type="radio"
+        id="oxygen"
+        name="need"
+        value="oxygen"
+        checked
+      />
       <label class="form-check-label" for="oxygen">Oxygen</label>
     </div>
     <div class="form-check form-switch">
-      <input class="form-check-input" type="radio" name="need" id="beds" value="beds" />
+      <input
+        class="form-check-input"
+        type="radio"
+        name="need"
+        id="beds"
+        value="beds"
+      />
       <label class="form-check-label" for="beds">Beds</label>
     </div>
     <div class="form-check form-switch">
-      <input class="form-check-input" type="radio" name="need" id="plasma" value="plasma" />
+      <input
+        class="form-check-input"
+        type="radio"
+        name="need"
+        id="plasma"
+        value="plasma"
+      />
       <label class="form-check-label" for="plasma">Plasma</label>
     </div>
     <i class="bi bi-arrow-right"></i>
@@ -30,8 +48,6 @@
       </div> -->
 </form>
 
-{% endblock maincontent %}
-
-{% block jscont %}
+{% endblock maincontent %} {% block jscont %}
 <script src="static/app.js"></script>
 {% endblock jscont %}

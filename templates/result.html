@@ -1,21 +1,26 @@
-{% extends "layout.html" %}
-{% block maincontent %}
+{% extends "layout.html" %} {% block maincontent %}
 <div class="container">
   <div class="row">
-    {% for i in tweet_data %}
+    {% for i in tweets_context %} {% if i.created_at >= a_day_before %}
+    <!--  -->
+    {% if i.text[0:2] !='RT' %}
     <div class="col-lg-8 offset-lg-4">
       <blockquote class="twitter-tweet">
-        <p>
-          {{ i.text }}
-        </p>
-        <a href="{{ i.url_tweet }}">{{ i.time_created }}</a>
+        <p>{{ i.text }}</p>
+        <a href="https://twitter.com/{{i.user.screen_name}}/status/{{i.id}}"
+          >{{ i.time_created }}</a
+        >
       </blockquote>
     </div>
-    {% endfor %}
+    {% endif %}
+    <!--  -->
+    {% endif %} {% endfor %}
   </div>
 </div>
-{% endblock maincontent %}
-
-{% block jscont %}
-<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+{% endblock maincontent %} {% block jscont %}
+<script
+  async
+  src="https://platform.twitter.com/widgets.js"
+  charset="utf-8"
+></script>
 {% endblock jscont %}

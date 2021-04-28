@@ -27,7 +27,7 @@ function validatePlace(place){
         console.log("not enough characters");
         error("rgb(189, 87, 87)");
     }else{
-        error("rgb(87, 189, 130)");
+        error("rgb(226, 240, 233)");
         return true;
     }
 }

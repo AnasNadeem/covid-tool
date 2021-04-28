@@ -7,7 +7,8 @@
 body {
   height: 100vh;
   display: flex;
-  background-color: rgb(87, 189, 130);
+  background-color: rgb(226, 240, 233);
+  /* background-color: rgb(87, 189, 130); */
   transition: background 0.5s ease;
   position: relative;
 }
