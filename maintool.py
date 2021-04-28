@@ -23,11 +23,11 @@ api = tweepy.API(auth)
     
 # api.verify_credentials()
 city_state = input('City name').lower()
-type_resource = input('Resource type').lower()
+# type_resource = input('Resource type').lower()
 
 current_time = datetime.now()
 a_day_before = current_time - timedelta(days=1)
-for tweet in tweepy.Cursor(api.search, q=f'{city_state} {type_resource}',result_type='recent').items(100):
+for tweet in tweepy.Cursor(api.search, q=f'{city_state}',result_type='recent').items(100):
     if tweet.created_at >= a_day_before:
         tweeted_or_not = tweet.text[0:2]
         if tweeted_or_not!='RT':
