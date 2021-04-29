@@ -34,20 +34,20 @@ def index():
         a_day_before = current_time - timedelta(days=1)
         twet = [tweet for tweet in tweepy.Cursor(api.search, q=f'{place} {needs} verified',result_type='recent').items(100)]
         # print(twet)
-        '''
-        for tweet in tweepy.Cursor(api.search, q=f'{place} {needs} verified',result_type='recent').items(100):
-            if tweet.created_at >= a_day_before:
-                tweeted_or_not = tweet.text[0:2]
-                if tweeted_or_not!='RT':
-                    text_tweeter = tweet.text
-                    date_created = tweet.created_at
-                    # day_created = date_created.strftime('%a')
-                    # date_created = date_created.strftime('%w')
-                    # year_created = date_created.strftime('%Y')
-                    # final_time = f"{day_created} {date_created}, {year_created}"
-                    url_of_tweet = f"https://twitter.com/{tweet.user.screen_name}/status/{tweet.id}"
-                    # print(f'{text_tweeter} {date_created} {url_of_tweet}')
-        '''
+
+        # for tweet in tweepy.Cursor(api.search, q=f'{place} {needs} verified',result_type='recent').items(100):
+        #     if tweet.created_at >= a_day_before:
+        #         tweeted_or_not = tweet.text[0:2]
+        #         if tweeted_or_not!='RT':
+        #             text_tweeter = tweet.text
+        #             date_created = tweet.created_at
+        #             # day_created = date_created.strftime('%a')
+        #             # date_created = date_created.strftime('%w')
+        #             # year_created = date_created.strftime('%Y')
+        #             # final_time = f"{day_created} {date_created}, {year_created}"
+        #             url_of_tweet = f"https://twitter.com/{tweet.user.screen_name}/status/{tweet.id}"
+        #             # print(f'{text_tweeter} {date_created} {url_of_tweet}')
+
         # tweets_context = [{
         #     'text':text_tweeter,
         #     'time_created':date_created,

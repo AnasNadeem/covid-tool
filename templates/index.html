@@ -1,53 +1,35 @@
 {% extends "layout.html" %} {% block maincontent %}
-<form id="covid-form" action="" method="post">
-  <div class="field-place">
-    <i class="bi bi-geo-alt"></i>
-    <input type="text" name="place" placeholder="State or City" />
-    <i class="bi bi-arrow-right"></i>
+<div class="main-content">
+  <div class="form">
+    <form method="POST" id="mainForm">
+      <div class="place-field">
+        <input
+          type="text"
+          placeholder="State or City"
+          name="place"
+          autofocus
+          required
+        />
+      </div>
+      <div class="need-field">
+        <select name="need" id="" class="dropdown-field">
+          <option value="oxygen">OXYGEN</option>
+          <option value="bed">BEDS</option>
+          <option value="plasma">PLASMA</option>
+        </select>
+      </div>
+      <div class="submit">
+        <input type="submit" />
+      </div>
+    </form>
   </div>
-  <div class="field-needs inactive">
-    <i class="bi bi-bag-plus"></i>
-
-    <div class="form-check form-switch">
-      <input
-        class="form-check-input"
-        type="radio"
-        id="oxygen"
-        name="need"
-        value="oxygen"
-        checked
-      />
-      <label class="form-check-label" for="oxygen">Oxygen</label>
-    </div>
-    <div class="form-check form-switch">
-      <input
-        class="form-check-input"
-        type="radio"
-        name="need"
-        id="beds"
-        value="beds"
-      />
-      <label class="form-check-label" for="beds">Beds</label>
-    </div>
-    <div class="form-check form-switch">
-      <input
-        class="form-check-input"
-        type="radio"
-        name="need"
-        id="plasma"
-        value="plasma"
-      />
-      <label class="form-check-label" for="plasma">Plasma</label>
-    </div>
-    <i class="bi bi-arrow-right"></i>
-  </div>
-  <!-- <div class="field-finish inactive">
-        <i class="bi bi-heart-fill"></i>
-        <p>Thank You!</p>
-        <i class="bi bi-heart-fill"></i>
-      </div> -->
-</form>
-
+</div>
 {% endblock maincontent %} {% block jscont %}
-<script src="static/app.js"></script>
+<script>
+  const mainForm = document.getElementById("mainForm");
+  mainForm.onsubmit = () => {
+    document.getElementById("loader").style.display = "block";
+    document.querySelector("main").style.display = "hide";
+  };
+</script>
 {% endblock jscont %}
