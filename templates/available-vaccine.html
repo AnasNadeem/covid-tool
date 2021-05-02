@@ -1,0 +1,40 @@
+{% extends "layout.html" %} {% block maincontent %} {% block css %}
+<link rel="stylesheet" href="/static/av.css" />
+{% endblock css %}
+<div class="table">
+  <table id="vaccine-details">
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Fee Type</th>
+        <th>Available Capacity</th>
+        <th>Minimum Age</th>
+        <th>Name</th>
+        <th>Slots</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for i in centers %} {% for k in i['sessions'] %}
+      <tr>
+        <td data-label="Date">{{k['date']}}</td>
+
+        <td data-label="Fee Type">{{i['fee_type']}}</td>
+        <td data-label="Available Capacity">{{k['available_capacity']}}</td>
+        <td data-label="Minimum Age">{{k['min_age_limit']}}</td>
+        <td data-label="Name">{{i['name']}}</td>
+        <td data-label="Slots" class="slots-td">
+          <!-- <table class="slot-table"> -->
+          {% for j in k['slots']%}
+          <!-- <tr> -->
+          <div>{{j}}</div>
+          <!-- </tr> -->
+          {% endfor %}
+          <!-- </table>
+        </td> -->
+        </td>
+      </tr>
+      {% endfor %} {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock maincontent %} {% block jscont %} {% endblock jscont %}

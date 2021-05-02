@@ -1,36 +1,30 @@
 {% extends "layout.html" %} {% block maincontent %}
 <div class="main-content">
   <div class="form">
-    <form method="POST" id="mainForm">
-      <div class="place-field">
+    <form method="POST" id="vaccineForm">
+      <div class="inp-field">
         <input
           type="text"
-          placeholder="State or City"
-          name="place"
+          placeholder="Pincode"
+          name="pincode"
           autofocus
           required
         />
       </div>
-      <div class="need-field">
-        <select name="need" id="" class="dropdown-field">
-          <option value="oxygen">OXYGEN</option>
-          <option value="bed">BEDS</option>
-          <option value="plasma">PLASMA</option>
-        </select>
-      </div>
+
       <div class="submit">
         <input type="submit" />
       </div>
       <div class="newpage-link">
-        To Get Vaccine Detail in your Location
-        <a href="/vaccine"> Click Here</a>
+        To Get Oxygen,beds or Plasma
+        <a href="/"> Click Here</a>
       </div>
     </form>
   </div>
 </div>
 {% endblock maincontent %} {% block jscont %}
 <script>
-  const mainForm = document.getElementById("mainForm");
+  const mainForm = document.getElementById("vaccineForm");
   mainForm.onsubmit = () => {
     document.getElementById("loader").style.display = "block";
     document.querySelector("main").style.display = "hide";

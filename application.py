@@ -1,6 +1,8 @@
-from flask import Flask, render_template,request
+from flask import Flask, render_template,request,jsonify
 import tweepy
 from  datetime import timedelta, datetime
+import requests
+
 
 app = Flask(__name__)
 
@@ -33,27 +35,23 @@ def index():
         current_time = datetime.now()
         a_day_before = current_time - timedelta(days=1)
         twet = [tweet for tweet in tweepy.Cursor(api.search, q=f'{place} {needs} verified',result_type='recent').items(100)]
-        # print(twet)
 
-        # for tweet in tweepy.Cursor(api.search, q=f'{place} {needs} verified',result_type='recent').items(100):
-        #     if tweet.created_at >= a_day_before:
-        #         tweeted_or_not = tweet.text[0:2]
-        #         if tweeted_or_not!='RT':
-        #             text_tweeter = tweet.text
-        #             date_created = tweet.created_at
-        #             # day_created = date_created.strftime('%a')
-        #             # date_created = date_created.strftime('%w')
-        #             # year_created = date_created.strftime('%Y')
-        #             # final_time = f"{day_created} {date_created}, {year_created}"
-        #             url_of_tweet = f"https://twitter.com/{tweet.user.screen_name}/status/{tweet.id}"
-        #             # print(f'{text_tweeter} {date_created} {url_of_tweet}')
-
-        # tweets_context = [{
-        #     'text':text_tweeter,
-        #     'time_created':date_created,
-        #     'url_tweet':url_of_tweet
-        # }]
-        # print(f'{text_tweeter} {date_created} {url_of_tweet}')
-                    # print(f"https://twitter.com/{tweet.user.screen_name}/status/{tweet.id}")
         return render_template('result.html',tweets_context=twet,a_day_before=a_day_before)
     return render_template('index.html')
+
+
+@app.route('/vaccine', methods=['post', 'get'])
+def vaccine():
+    if request.method=='POST':
+        pincode= request.form.get('pincode')
+        date= datetime.today().strftime('%d-%m-%Y')
+
+        res = requests.get("https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByPin", params={"pincode":pincode, "date": date})
+
+        data = res.json()
+
+        # print(data['centers'][0]['sessions'][0])
+        return render_template('available-vaccine.html', centers=data['centers'])
+    return render_template('vaccine.html')
+
+

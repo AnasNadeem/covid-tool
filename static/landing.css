@@ -9,11 +9,17 @@ body {
 }
 
 .logo {
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+.logo a {
+  text-decoration: none;
   color: rgb(46, 45, 45);
 }
 
 .nav {
   display: flex;
+  /* justify-content: space-between; */
   width: 100%;
   height: 12vh;
   align-items: center;
@@ -54,7 +60,27 @@ form {
   align-items: center;
 }
 
+.inp-field {
+  display: flex;
+  justify-content: space-between;
+  width: 400px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.newpage-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5px;
+}
+
 @media screen and (max-width: 400px) {
+  .newpage-link {
+    width: 300px;
+  }
   .submit {
     display: flex;
     justify-content: space-between;
@@ -73,6 +99,15 @@ form {
     display: flex;
     align-items: center;
   }
+  .inp-field {
+    display: flex;
+    justify-content: space-between;
+    width: 300px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+  }
 }
 
 .submit input,
@@ -89,6 +124,17 @@ form {
   border-radius: 5px;
 }
 
+.inp-field input {
+  background: none;
+  border: none;
+  flex: 1;
+  height: 100%;
+  outline: none;
+  padding: 10px;
+  margin-bottom: 20px;
+  background: white;
+  border-radius: 5px;
+}
 /*  */
 /* Center the loader */
 #loader {
@@ -122,4 +168,13 @@ form {
   100% {
     transform: rotate(360deg);
   }
+}
+
+.newpage-link a {
+  text-decoration: none;
+  padding: 3px;
+  background-color: #222121;
+  border-radius: 5px;
+  color: yellow;
+  text-align: center;
 }
