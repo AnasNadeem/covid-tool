@@ -1,4 +1,5 @@
 from flask import Flask, render_template,request,jsonify
+from newsapi import NewsApiClient
 import tweepy
 from  datetime import timedelta, datetime
 import requests
@@ -16,10 +17,14 @@ API_SECRET="vVZ5Mcho45NY6kr3pKYItv1OxldfhuqL2Pam7uw19S0OjYx9po"
 ACCESS_TOKEN="1210144233157545985-IBDjTH5ywEOk1Zg84KcUMW82YBMl5B"
 # Access token secret
 ACCESS_TOKEN_SECRET="Qhoeh5wT3AxFYU6JRAjpzPrQig4ldvBWyqfQybcysAU0j"
+
 api_key = API_KEY
 api_secret = API_SECRET
 access_token = ACCESS_TOKEN
 access_token_secret = ACCESS_TOKEN_SECRET
+
+# news api
+News_API_KEY = 'd5f86ab6f4ba4e139f282e1472316682'
 
 
 auth = tweepy.OAuthHandler(api_key, api_secret)
@@ -55,3 +60,25 @@ def vaccine():
     return render_template('vaccine.html')
 
 
+
+
+@app.route("/health")
+def homepage():
+    newsapi = NewsApiClient(api_key=News_API_KEY)
+
+    topheadlines = newsapi.get_top_headlines(language='en', category='health',country='in')
+    # print(th)
+    articles = topheadlines['articles']
+    # print(articles)
+    desc=[]
+    news=[]
+    images = []
+    urls = []
+    for i in range(len(articles)):
+        myarticles = articles[i]
+        news.append(myarticles['title'])
+        desc.append(myarticles['description'])
+        images.append(myarticles['urlToImage'])
+        urls.append(myarticles['url'])
+    mylist = zip(news,desc,images,urls)
+    return render_template('health.html',context=mylist)

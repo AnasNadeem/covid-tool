@@ -1,0 +1,21 @@
+{% extends "layout.html" %} {% block css %}
+<link rel="stylesheet" href="/static/health.css" />
+{% endblock css %} {% block maincontent %}
+
+<div class="health-news">
+  {% for news,desc,images,urls in context %}
+  <div class="news">
+    <a target="_blank" href="{{urls}}">
+      <div class="news-thumbnail">
+        <img src="{{images}}" alt="" width="100%" />
+      </div>
+      <div class="news-text">
+        <div class="news-title">{{news}}</div>
+        <div class="news-desc">{{desc}}</div>
+      </div>
+    </a>
+  </div>
+  {% endfor %}
+</div>
+
+{% endblock maincontent %} {% block jscont %} {% endblock jscont %}
