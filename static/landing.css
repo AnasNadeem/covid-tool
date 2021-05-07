@@ -190,3 +190,15 @@ form {
   color: yellow;
   text-align: center;
 }
+
+.vaccineDetailsCard {
+  margin-top: 1rem;
+}
+
+.vaccineDetailsCardText {
+  margin-bottom: 0rem;
+}
+.vaccineDetailsCardText span {
+  font-size: 1.1rem;
+  font-weight: 500;
+}

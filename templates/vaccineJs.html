@@ -1,0 +1,14 @@
+{% extends "layout.html" %} {% block maincontent %}
+<div class="container">
+    <div class="row">
+        <div class="col-lg-5 mx-auto text-center mt-3">
+            <input type="text" placeholder="Pincode" id="pin_code" class="form-control" autofocus required />
+            <input type="submit" class="btn btn-primary mt-2" id="submitBtn" />
+        </div>
+    </div>
+    <div id="vaccineDetailsCont">
+    </div>
+</div>
+{% endblock maincontent %} {% block jscont %}
+<script src="static/scriptJs.js"></script>
+{% endblock jscont %}

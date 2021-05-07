@@ -45,22 +45,24 @@ def index():
     return render_template('index.html')
 
 
-@app.route('/vaccine', methods=['post', 'get'])
+# @app.route('/vaccine', methods=['post', 'get'])
+# def vaccine():
+#     if request.method=='POST':
+#         pincode= request.form.get('pincode')
+#         date= datetime.today().strftime('%d-%m-%Y')
+
+#         res = requests.get("https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByPin", params={"pincode":pincode, "date": date})
+
+#         data = res.json()
+
+#         # print(data['centers'][0]['sessions'][0])
+#         return render_template('available-vaccine.html', centers=data['centers'])
+#     return render_template('vaccine.html')
+
+
+@app.route("/vaccine")
 def vaccine():
-    if request.method=='POST':
-        pincode= request.form.get('pincode')
-        date= datetime.today().strftime('%d-%m-%Y')
-
-        res = requests.get("https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByPin", params={"pincode":pincode, "date": date})
-
-        data = res.json()
-
-        # print(data['centers'][0]['sessions'][0])
-        return render_template('available-vaccine.html', centers=data['centers'])
-    return render_template('vaccine.html')
-
-
-
+    return render_template('vaccineJs.html')
 
 @app.route("/health")
 def homepage():
