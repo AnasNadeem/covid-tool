@@ -64,6 +64,10 @@ def index():
 def vaccine():
     return render_template('vaccineJs.html')
 
+@app.route("/covidfood")
+def covidfood():
+    return render_template('covidfood.html')
+
 @app.route("/health")
 def homepage():
     newsapi = NewsApiClient(api_key=News_API_KEY)

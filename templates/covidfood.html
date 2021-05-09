@@ -1,0 +1,22 @@
+{% extends "layout.html" %} {% block maincontent %}
+<div class="container">
+    <div class="row">
+        <div class="col-lg-5 mx-auto mt-4 text-center">
+            <select class="form-select mb-2" id="stateList" name="stateListName">
+                <option value="">Select State</option>
+            </select>
+            <input type="text" id="keywordCityPro" class="form-control mb-2"
+                placeholder="Enter City\Service Provider (Optional)">
+            <div class="d-grid mx-auto">
+                <input type="button" id="searchBtn" class="btn btn-primary" value="Search">
+            </div>
+        </div>
+    </div>
+    <div id="mainInfo">
+
+    </div>
+</div>
+
+{% endblock maincontent %} {% block jscont %}
+<script src="/static/foodscript.js"></script>
+{% endblock jscont %}
