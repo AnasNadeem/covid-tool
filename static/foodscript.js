@@ -1,4 +1,4 @@
-function loadPageSt() {
+window.onload = () => {
     location_api = `https://api.covidmealsforindia.com/user/location_filter`;
     async function getData() {
         let response = await fetch(location_api);
@@ -11,7 +11,6 @@ function loadPageSt() {
     }
     getData();
 }
-loadPageSt();
 let searchBtn = document.getElementById('searchBtn')
 searchBtn.addEventListener('click', function doStuff() {
     let stateList = document.getElementById('stateList');
